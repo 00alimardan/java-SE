@@ -1,13 +1,14 @@
 package java.HappyFamily;
 
-import java.util.Arrays;
+import java.util.Map;
 
 public class Human {
     private String name;
     private String surname;
     private int year;
     private int iq;
-    private String[][] schedule;
+    private Family family;
+    private Map<DayOfWeek,String> schedule;
 
     public String getName() {
         return name;
@@ -33,12 +34,16 @@ public class Human {
         return iq;
     }
 
-    public String[][] getSchedule() {
+    public Map<DayOfWeek, String> getSchedule() {
         return schedule;
     }
 
-    public void setSchedule(String[][] schedule) {
+    public void setSchedule(Map<DayOfWeek, String> schedule) {
         this.schedule = schedule;
+    }
+
+    public void greetPet(){
+        System.out.printf("Hello,%s\n",family.getPet());
     }
 
     public int setYear(int year){
@@ -63,7 +68,7 @@ public class Human {
         this.surname = surname;
     }
 
-    public Human(String name, String surname, int year, int iq, String[][] schedule) {
+    public Human(String name, String surname, int year, int iq, Map<DayOfWeek, String> schedule) {
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -78,7 +83,7 @@ public class Human {
                 ", surname='" + surname + '\'' +
                 ", year='" + year + '\'' +
                 ", iq=" + iq +
-                ", schedule=" + Arrays.deepToString(schedule) +
+                ", schedule=" + schedule +
                 '}';
     }
     @Override

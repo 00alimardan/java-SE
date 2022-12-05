@@ -2,6 +2,8 @@ package java.HappyFamily;
 
 public enum Species {
     DOG,
-    CAT,
-    RABBIT,
+    DOMESTIC_CAT,
+    ROBO_CAT,
+    FISH,
+    UNKNOWN,
 }

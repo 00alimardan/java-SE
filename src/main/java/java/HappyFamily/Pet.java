@@ -1,13 +1,13 @@
 package java.HappyFamily;
 
-import java.util.Arrays;
+import java.util.Set;
 
-public class Pet {
+public abstract class Pet {
     private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
-    private String[] habits;
+    private Set<String> habits;
 
     public Species getSpecies() {
         return species;
@@ -33,26 +33,18 @@ public class Pet {
         return trickLevel;
     }
 
-    public String[] getHabits() {
+    public Set<String> getHabits() {
         return habits;
     }
 
-    public void setHabits(String[] habits) {
+    public void setHabits(Set<String> habits) {
         this.habits = habits;
     }
 
-    public void eat(){
+    public void eat(){System.out.println("'I am eating'");}
 
-        System.out.println("'I am eating'");
-    }
 
-    public void respond(){
-        System.out.println("'Hello, owner. I am - [the name of the pet]. I miss you!'");
-    }
-
-    public static void foul(){
-        System.out.println("'I need to cover it up'");
-    }
+    public abstract void respond();
 
     public int setAge(int age){
         if (age>1)
@@ -67,13 +59,22 @@ public class Pet {
         else return -1;
     }
 
-    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
-        setSpecies(species);
+    public Pet(String nickname, int age, int trickLevel, Set<String> habits) {
+//        if(species!=null){
+//            setSpecies(species);
+//        }
+//        else {
+//            setSpecies(Species.UNKNOWN);
+//        }
+        setSpecies(Species.UNKNOWN);
         this.nickname = nickname;
         this.age = setAge(age);
         this.trickLevel = setTrickLevel(trickLevel);
         this.habits = habits;
 
+    }
+
+    public Pet() {
     }
 
     @Override
@@ -83,7 +84,7 @@ public class Pet {
                 ", nickname='" + nickname + '\'' +
                 ", age=" + age +
                 ", trickLevel=" + trickLevel +
-                ", habits=" + Arrays.toString(habits) +
+                ", habits=" + habits +
                 '}';
     }
     @Override

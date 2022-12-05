@@ -1,12 +1,13 @@
 package java.HappyFamily;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Set;
 
 public class Family {
     private Human mother;
     private Human father;
-    private Human[] children;
-    private Pet pet;
+    private ArrayList<Human> children;
+    private Set<Pet> pet;
     private Family family;
 
     public Family getFamily() {
@@ -33,30 +34,30 @@ public class Family {
         this.father = father;
     }
 
-    public Human[] getChildren() {
+    public ArrayList<Human> getChildren() {
         return children;
     }
 
-    public void setChildren(Human[] children) {
+    public void setChildren(ArrayList<Human> children) {
         this.children = children;
     }
 
-    public Pet getPet() {
+    public Set<Pet> getPet() {
         return pet;
     }
 
-    public void setPet(Pet pet) {
+    public void setPet(Set<Pet> pet) {
         this.pet = pet;
     }
 //******************************************************************************
-    public Family(Human mother, Human father, Human[] children, Pet pet, Family family) {
+    public Family(Human mother, Human father, ArrayList<Human> children, Set<Pet> pet, Family family) {
         this.mother = mother;
         this.father = father;
         this.children = children;
         this.pet = pet;
         this.family = family;
     }
-    public Family(Human mother, Human father, Human[] children) {
+    public Family(Human mother, Human father, ArrayList<Human> children) {
         this.mother = mother;
         this.father = father;
         this.children = children;
@@ -64,62 +65,40 @@ public class Family {
     public Family(Human mother, Human father) {
         this.mother = mother;
         this.father = father;
-        this.children = new Human[]{};
+        this.children = new ArrayList<>();
     }
 //******************************************************************************
 
 //******************************************************************************
     public void addChild(Human child){
-        if (children.length==0) {
-            children = new Human[1];
-            children[0] = child;
-        }
-        else {
-            Human[] newChildrenArr=new Human[children.length+1];
-            System.arraycopy(children,0,newChildrenArr,0,newChildrenArr.length);
-            newChildrenArr[newChildrenArr.length-1]=child;
-            children=newChildrenArr;
-        }
+        children.add(child);
+
     }
 //    -----------------------------------------------------
     public boolean deleteChild(Human child){
-        if (children.length==0){
+        if (children.contains(child)){
+            children.remove(child);
             return false;
         }
-        else if (!Arrays.stream(children).anyMatch(child::equals)){
-            return false;
-        }
+
         else{
-            Human[] newChildrenArr =new Human[children.length-1];
-            for (int i=0;i< children.length;i++){
-                if (children[i]!= child){
-                    newChildrenArr[i]=children[i];
-                }
-            }
-            children=newChildrenArr;
-            return  true;
+            return  false;
         }
     }
     //    -----------------------------------------------------
     public boolean deleteChild(int n){
-        if (children.length==0){
+        if (children.size()==0){
             return false;
         }
         else {
-            Human[] newChildrenArr=new Human[children.length-1];
-            for (int i=0;i< children.length;i++){
-                if (i!=n){
-                    newChildrenArr[i]=children[i];
-                }
-            }
-            children=newChildrenArr;
+            children.remove(n);
             return true;
         }
     }
 //******************************************************************************
     public int countFamily(){
         int count=2;
-        count=children.length;
+        count=children.size();
         if (pet!=null)
             count+=1;
         return count;
@@ -130,7 +109,7 @@ public class Family {
         return "Family{" +
                 "mother=" + mother +
                 ", father=" + father +
-                ", children=" + Arrays.toString(children) +
+                ", children=" + children +
                 ", pet=" + pet +
                 ", family=" + family +
                 '}';
