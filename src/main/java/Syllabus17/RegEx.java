@@ -19,7 +19,7 @@ public class RegEx {
     System.out.println(Arrays.toString(s1.split("[' '.]")));
 
 
-    Pattern pattern3=Pattern.compile("[^A-Z]");
+    Pattern pattern3=Pattern.compile("[^A-Z0-9]");
     Matcher matcher3=pattern3.matcher("hello");
     System.out.println(matcher3.find());
     }
