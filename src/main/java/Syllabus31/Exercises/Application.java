@@ -13,12 +13,19 @@ public class Application {
         Person mother=new Person("Kate","McCallister");
         Person child=new Person("Kevin","McCallister",8, Gender.MALE,father,mother);
         addPeople();
+
+        System.out.println("Sorted by name: ");
         sortByName();
         System.out.println("========================================");
-        sortByAge();
-        System.out.println("========================================");
+
+        System.out.println("Sorted by surname: ");
         sortBySurname();
         System.out.println("========================================");
+
+        System.out.println("Sorted by age: ");
+        sortByAge();
+        System.out.println("========================================");
+
         System.out.println(child);
     }
 
