@@ -5,6 +5,7 @@ public class User {
     private String username;
     private String password;
 
+
     public float getId() {
         return id;
     }
@@ -28,6 +29,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 
     public User(float id, String username, String password) {
         this.id = id;

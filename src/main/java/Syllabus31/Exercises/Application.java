@@ -16,6 +16,7 @@ public class Application {
         Person father=new Person("Peter","McCallister");
         Person mother=new Person("Kate","McCallister");
         Person child=new Person("Kevin","McCallister",8, Gender.MALE,father,mother);
+
         addPeople();
 
 //        System.out.println("Sorted by name: ");
@@ -111,11 +112,11 @@ public class Application {
     public static void writeToFile() throws IOException, RuntimeException{
         File file = new File("src/main/resources/PeopleData.txt");
         try (FileWriter writer = new FileWriter(file)) {
-
-            writer.write(String.valueOf(people));
+            for (Person p:people){
+                writer.write(String.valueOf(p).concat("\n"+"\n"));
+            }
         }
     }
-
     public static void readFromFile() throws Exception {
         File file = new File("src/main/resources/PeopleData.txt");
         Scanner sc = new Scanner(file);
@@ -123,5 +124,6 @@ public class Application {
             System.out.println(sc.nextLine());
         }
     }
+
 }
 //https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java

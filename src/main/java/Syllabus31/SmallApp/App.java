@@ -1,13 +1,12 @@
 package Syllabus31.SmallApp;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class App {
    public static final Scanner scr=new Scanner(System.in);
    public static final List<Person> person=new ArrayList<>();
     public static final List<User> user=new ArrayList<>();
+    public static final Map<Person,User> people=new HashMap<>();
     public static float id=0;
     public static void run(){
         boolean key=true;
@@ -54,7 +53,6 @@ public class App {
         System.out.println("Enter Person's Gender: 1.MALE; 2.Female");
         int input=scr.nextInt();
         Gender gender=Gender.UNKNOWN;
-
 
         switch (input){
             case 1:
